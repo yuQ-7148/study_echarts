@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <v-chart theme="dark" class="chart" :option="option"/>
+        <v-chart theme="dark" class="chart" @click="getParams" :option="option" />
         <h3>line-smooth</h3>
     </div>
 </template>
@@ -8,6 +8,11 @@
 <script>
 export default {
     name: 'lineSmooth',
+    methods: {
+        getParams(params) {
+            console.log(params);
+        },
+    },
     computed: {
         option() {
             return {
@@ -37,11 +42,13 @@ export default {
                         type: 'line',
                         smooth: true,
                         color: '#fff',
+                        groupId: 'count1'
                     },
                     {
                         name: 'score',
-                        type: 'bar',
+                        type: 'line',
                         smooth: true,
+                        groupId: 'score1'
                     },
                 ],
 
@@ -80,9 +87,28 @@ export default {
                         'score': [840, 952, 911, 914, 1340, 1110, 1320],
                     }
                 },
+
+
+
+
+                // drilldownData: [
+                //     {
+                //         dataGroupId: 'count1',
+                //         data: [
+                //             ['Mon', 890],
+                //             ['Tue', 1120],
+                //             ['Wed', 1340],
+                //             ['Thu', 934],
+                //             ['Fri', 932],
+                //             ['Sat', 953],
+                //             ['Sun', 914],
+                //         ]
+                //     }
+                // ]
+
             }
-        }
-    },
+        },
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <v-chart class="chart" :option="option" />
+        <v-chart class="chart" @click="getParams" :option="option" />
         <h3>line-simple</h3>
     </div>
 </template>
@@ -8,6 +8,11 @@
 <script>
 export default {
     name: 'lineSimple',
+    methods: {
+        getParams(params) {
+            console.log(params);
+        }
+    },
     computed: {
         option() {
             return {
