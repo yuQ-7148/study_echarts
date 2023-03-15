@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <v-chart ref="chart" class="chart" :option="option" />
+        <v-chart theme="dark" class="chart" :option="option" />
         <h3>line-smooth</h3>
     </div>
 </template>
@@ -11,20 +11,72 @@ export default {
     computed: {
         option() {
             return {
+                title: {
+                    text: 'zhexian',
+                    left: 'center',
+                    subtext: 'fubiaoti',
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                // legend: {
+                //     data: ['weekday'],
+                // },
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                 },
                 yAxis: {
-                    type: 'value'
+                    // type: 'value'
                 },
                 series: [
                     {
-                        data: [820, 932, 901, 934, 1290, 1330, 1320],
+                        name: 'count',
                         type: 'line',
-                        smooth: true
+                        smooth: true,
+                    },
+                    {
+                        name: 'score',
+                        type: 'line',
+                        smooth: true,
+                    },
+                ],
+
+//按列传入数据（方式一）-------------------------------------------------------------------------------------------------
+                // dataset: {
+                //     source: [
+                //         ['weekday', 'count', 'score'],
+                //         ['Mon', 820, 840],
+                //         ['Tue', 920, 952],
+                //         ['Wed', 901, 911],
+                //         ['Thu', 934, 914],
+                //         ['Fri', 1290, 1340],
+                //         ['Sat', 1330, 1110],
+                //         ['Sun', 1320, 1320],
+                //     ]
+                // },
+
+//按列传入数据（方式二）-------------------------------------------------------------------------------------------------
+                // dataset: {
+                //     source: [
+                //         { weekday: 'Mon', count: 820, score: 840 },
+                //         { weekday: 'Tue', count: 920, score: 952 },
+                //         { weekday: 'Wed', count: 901, score: 911 },
+                //         { weekday: 'Thu', count: 934, score: 914 },
+                //         { weekday: 'Fri', count: 1290, score: 1340 },
+                //         { weekday: 'Sat', count: 1330, score: 1110 },
+                //         { weekday: 'Sun', count: 1320, score: 1320 },
+                //     ]
+                // },
+
+//按行传入数据----------------------------------------------------------------------------------------------------------
+                dataset: {
+                    source: {
+                        'weekday': ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                        'count': [820,932,901,934,1290,1330,1320],
+                        'score': [840,952,911,914,1340,1110,1320],
                     }
-                ]
+                },
             }
         }
     },
