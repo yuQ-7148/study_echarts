@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <v-chart theme="dark" class="chart" :option="option" />
+        <v-chart theme="dark" class="chart" :option="option"/>
         <h3>line-smooth</h3>
     </div>
 </template>
@@ -13,36 +13,39 @@ export default {
             return {
                 title: {
                     text: 'zhexian',
-                    left: 'center',
+                    left: 'left',
                     subtext: 'fubiaoti',
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
-                // legend: {
-                //     data: ['weekday'],
-                // },
+                legend: {
+                    data: ['count', 'score'],
+                },
                 xAxis: {
                     type: 'category',
-                    // data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    //x轴刻度与标题对齐----------------------------------------------------
+                    // boundaryGap: false,
+                    axisTick: {
+                        alignWithLabel: true
+                    },
                 },
-                yAxis: {
-                    // type: 'value'
-                },
+                yAxis: {},
                 series: [
                     {
                         name: 'count',
                         type: 'line',
                         smooth: true,
+                        color: '#fff',
                     },
                     {
                         name: 'score',
-                        type: 'line',
+                        type: 'bar',
                         smooth: true,
                     },
                 ],
 
-//按列传入数据（方式一）-------------------------------------------------------------------------------------------------
+                //按列传入数据（方式一）-------------------------------------------------------------------------------------------------
                 // dataset: {
                 //     source: [
                 //         ['weekday', 'count', 'score'],
@@ -56,7 +59,7 @@ export default {
                 //     ]
                 // },
 
-//按列传入数据（方式二）-------------------------------------------------------------------------------------------------
+                //按列传入数据（方式二）-------------------------------------------------------------------------------------------------
                 // dataset: {
                 //     source: [
                 //         { weekday: 'Mon', count: 820, score: 840 },
@@ -69,12 +72,12 @@ export default {
                 //     ]
                 // },
 
-//按行传入数据----------------------------------------------------------------------------------------------------------
+                //按行传入数据----------------------------------------------------------------------------------------------------------
                 dataset: {
                     source: {
-                        'weekday': ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-                        'count': [820,932,901,934,1290,1330,1320],
-                        'score': [840,952,911,914,1340,1110,1320],
+                        'weekday': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        'count': [820, 932, 901, 934, 1290, 1330, 1320],
+                        'score': [840, 952, 911, 914, 1340, 1110, 1320],
                     }
                 },
             }

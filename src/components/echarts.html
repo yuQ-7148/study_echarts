@@ -10,8 +10,10 @@
 
 <body>
     <div style="position: relative; height: 100%;">
-        <div id="container" style="position: absolute; left: 10px; height: 400px; width: 600px; border: 1px solid black;"></div>
-        <div id="container_1" style="position: absolute; left: 620px; height: 400px; width: 600px; border: 1px solid black"></div>
+        <div id="container"
+             style="position: absolute; left: 10px; height: 400px; width: 600px; border: 1px solid black;"></div>
+        <div id="container_1"
+             style="position: absolute; left: 620px; height: 400px; width: 600px; border: 1px solid black"></div>
     </div>
 
 
@@ -49,7 +51,7 @@
 
         window.addEventListener('resize', myChart.resize);
 
-//-----------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------------------
 
         var chartDom = document.getElementById('container_1');
         var myChart_1 = echarts.init(chartDom, null, {
@@ -99,6 +101,11 @@
         if (option_1 && typeof option_1 === 'object') {
             myChart_1.setOption(option_1);
         }
+
+        myChart_1.on('click', function (params) {
+            // 控制台打印数据的名称
+            console.log(params.name);
+        });
 
         window.addEventListener('resize', myChart_1.resize);
     </script>
